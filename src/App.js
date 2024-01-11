@@ -2,11 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import SecondCurd from './SecondCurd';
 import Third from './Third';
+// import Four from './Four';
+import Five from './Five';
+import Six from './Six';
+import Curd from './Curd';
 import Four from './Four';
 function App() {
   return (
     <>
-      {/* <Curd></Curd> */}
+      <Curd></Curd>
       <br /><br />
       <hr />
       <br /><br />
@@ -14,7 +18,9 @@ function App() {
       <br /><br />
       <hr />
       <Four></Four>
-      {/* <Third></Third> */}
+      <Five></Five>
+      <Third></Third>
+    <Six></Six>
     </>
   );
 }

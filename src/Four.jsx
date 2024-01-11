@@ -23,6 +23,8 @@ const Four = () => {
       })
       setAlldata(data);
       setEditeid("");
+      localStorage.setItem('four', JSON.stringify(data));
+
     } else {  
       let obj = {
         id: Math.floor(Math.random() * 2000),

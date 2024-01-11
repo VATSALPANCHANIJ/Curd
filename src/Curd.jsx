@@ -29,6 +29,8 @@ const Curd = () => {
             })
             setAlldata(ans);
             setEditid("");
+            localStorage.setItem('alldata', JSON.stringify(ans));
+
 
         }else {
             // enter the data afer click submit that time  

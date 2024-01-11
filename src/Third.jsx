@@ -25,6 +25,8 @@ const Third = () => {
             })
             setAlldata(data);
             setEditeid("");
+            localStorage.setItem('third', JSON.stringify(data));
+
         } else {
             let obj = {
                 id: Math.floor(Math.random() * 1000),

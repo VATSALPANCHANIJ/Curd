@@ -26,6 +26,8 @@ const SecondCurd = () => {
             })
             setAlldata(ans);
             setEditId("");
+            localStorage.setItem('Se_curd', JSON.stringify(ans));
+
         } else {
 
             let obj = {
@@ -46,6 +48,7 @@ const SecondCurd = () => {
 
     //delete
     const deletedata = (id) => {
+        console.log(id);
         let data = alldata.filter((item) => {
             return item.id !== id;
         })
