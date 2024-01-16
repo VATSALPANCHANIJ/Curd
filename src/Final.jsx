@@ -1,85 +1,78 @@
 import React, { useEffect, useState } from 'react'
 
-const Five = () => {
+const Final = () => {
     const [alldata, setAlldata] = useState([]);
-    const [editid, setEditId] = useState("");
+    const [editid, setEditid] = useState("");
     const [input, setInput] = useState({
         name: ''
-    })
-
-    const handlechage = (e) => {
+    });
+    const handlechange = (e) => {
         const { name, value } = e.target;
         setInput({
             ...input, [name]: value
         })
     }
-    const handlesubmt = () => {
+    const submitdata = () => {
         if (editid) {
-            let ans = alldata.filter((item) => {
+            let data = alldata.filter((item) => {
                 if (item.id === editid) {
-                    item.name = input.name;
+                    item.name = input.name
                 }
                 return item
             })
-            setAlldata(ans);
-            setEditId("");
-            localStorage.setItem('datastore', JSON.stringify(ans));
-
+            setAlldata(data);
+            setEditid("");
+            localStorage.setItem("vatsalkeydata", JSON.stringify(data));
         } else {
             let obj = {
-                id: Math.floor(Math.random() * 1000),
-                name: input.name,
+                id: Math.floor(Math.random() * 10000),
+                name: input.name
             }
-            console.log(obj);
-            let datastore = [...alldata, obj];
-            setAlldata(datastore);
-            localStorage.setItem("datastore", JSON.stringify(datastore));
+            let data = [...alldata, obj];
+            setAlldata(data);
+            localStorage.setItem("vatsalkeydata", JSON.stringify(data));
         }
         setInput({
             name: ""
         })
-    };
+    }
     const deletedata = (id) => {
         let data = alldata.filter((val) => {
             return val.id !== id;
         })
         setAlldata(data);
-        localStorage.setItem("datastore", JSON.stringify(data));
+        localStorage.setItem("vatsalkeydata", JSON.stringify(data));
     }
     const editdata = (id) => {
         let data = alldata.filter((val) => {
             return val.id === id;
-        })
+        });
         setInput(data[0]);
-        setEditId(id);
-    };
+        setEditid(id);
+    }
     useEffect(() => {
-        let data = JSON.parse(localStorage.getItem("datastore"));
-        if (!data) {
-            setAlldata([]);
-        } else {
+        let data = JSON.parse(localStorage.getItem("vatsalkeydata"));
+        if(!data){
+            setAlldata([])
+        }else{
             setAlldata(data);
         }
-    }, []);
+    },[])
     return (
         <center>
             <table>
                 <tr>
-                    <td><input type="text" onChange={handlechage} value={input.name} name='name' /></td>
+                    <td>Name</td>
+                    <td><input type="text" name="name" onChange={handlechange} value={input.name} /></td>
                     <td>
                         {
-                            editid ? (
-                                <button onClick={() => handlesubmt()}>Edit</button>
-
-                            ) : (
-                                <button onClick={() => handlesubmt()}>Submit</button>
-                            )
+                            editid ? (<button onClick={() => submitdata()}>Edit</button>)
+                                : (<button onClick={() => submitdata()}>submit</button>)
                         }
                     </td>
                 </tr>
             </table>
-            <br />
-            <table border={1} style={{ textAlign: "center" }}>
+            <table>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -89,10 +82,10 @@ const Five = () => {
                 </thead>
                 <tbody>
                     {
-                        alldata.map((val, key) => {
-                            const { id, name } = val;
+                        alldata.map((value, key) => {
+                            const { id, name } = value;
                             return (
-                                <tr key={id}>
+                                <tr key={key}>
                                     <td>{id}</td>
                                     <td>{name}</td>
                                     <td>
@@ -102,10 +95,13 @@ const Five = () => {
                                 </tr>
                             )
                         })
+
                     }
                 </tbody>
             </table>
         </center>
     )
 }
-export default Five;
+
+export default Final;
+

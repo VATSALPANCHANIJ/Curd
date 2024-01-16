@@ -7,10 +7,12 @@ import Five from './Five';
 import Six from './Six';
 import Curd from './Curd';
 import Four from './Four';
+import Seven from './Seven';
+import Final from './Final';
 function App() {
   return (
     <>
-      <Curd></Curd>
+      {/* <Curd></Curd>
       <br /><br />
       <hr />
       <br /><br />
@@ -19,8 +21,10 @@ function App() {
       <hr />
       <Four></Four>
       <Five></Five>
-      <Third></Third>
-    <Six></Six>
+      <Third></Third> */}
+      {/* <Six></Six> */}
+      <Final></Final>
+      {/* <Seven></Seven> */}
     </>
   );
 }
